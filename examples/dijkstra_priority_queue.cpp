@@ -1,3 +1,7 @@
+/**
+ * 堆优化的Dijkstra算法求两点最短距离或最优路径问题
+ * 在每次迭代中用优先级队列查找最短路径
+ */
 #include <iostream>
 #include <vector>
 #include <queue>

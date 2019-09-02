@@ -1,3 +1,9 @@
+/**
+ * Dijkstra求两点最短距离或最优路径问题
+ * A1072
+ * A1111
+ * A1131
+ */
 #include <iostream>
 #include <vector>
 #include <limits.h>
