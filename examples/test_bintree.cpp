@@ -78,8 +78,6 @@ int main () {
 
     printf("is_complete3: %s\n", is_complete3(root) ? "Yes":"No");
 
-    printf("is_complete4: %s\n", is_complete4(root) ? "Yes":"No");
-
     printf("is_full1: %s\n", is_full1(root) ? "Yes":"No");
 
     printf("is_full2: %s\n", is_full2(root) ? "Yes":"No");

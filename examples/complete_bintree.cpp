@@ -28,7 +28,7 @@ bool is_complete1(Node *root) {
 }
 
 /*
- * 层侧遍历二叉树，把空节点也放入队列
+ * 层次遍历二叉树，把空节点也放入队列
  * 遍历到空节点后，队列里如果还存在非空节点则不是完全二叉树
  */
 bool is_complete2(Node *root) {
@@ -55,38 +55,9 @@ bool is_complete2(Node *root) {
 }
 
 /*
- * 层次遍历二叉树
- * 判断除了最后一层外每一层节点个数是否为2的N次幂
- */
-bool is_complete3(Node *root) {
-    bool res = true;
-    int level = 0, cnt = 0;
-    queue<Node*> q;
-    q.push(root);
-    while (!q.empty()) {
-        Node *node = q.front();
-        if (node->left) q.push(node->left);
-        if (node->right) q.push(node->right);
-        q.pop();
-        // 遍历到下一层
-        if (node->level != level) {
-            // 判断这一层的节点个数
-            if (cnt != pow(2, level)) {
-                res = false;
-                break;
-            }
-            level = node->level;
-            cnt = 0;
-        }
-        cnt++;
-    }
-    return res;
-}
-
-/*
  * 得到层次遍历序列后，依次对于第i(0~n-1)个节点，(i+1)*2-1是否为左孩子，(i+1)*2是否为右孩子
  */
-bool is_complete4(Node *root) {
+bool is_complete3(Node *root) {
     vector<Node*> lvlorder;
     queue<Node*> q;
     q.push(root);
