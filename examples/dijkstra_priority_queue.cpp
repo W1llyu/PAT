@@ -21,8 +21,7 @@ vector<int> edges[MAXN];
 
 void dijkstra(int src, int dst) {
     vector<bool> visits(n, false);
-    vector<int> dist(n, INT_MAX);
-    vector<int> routes[MAXN];
+    vector<int> dist(n, INT_MAX), routes[MAXN];
     priority_queue<Vertex> pq;
     dist[src] = 0;
     pq.push(Vertex{src, 0});

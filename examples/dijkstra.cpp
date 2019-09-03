@@ -11,12 +11,11 @@
 using namespace std;
 
 int n, m, x, y, d, distmap[MAXN][MAXN];
-<vector<int> edges[MAXN];
+vector<int> edges[MAXN];
 
 void dijkstra(int src, int dst) {
     vector<bool> visits(n, false);
-    vector<int> dist(n, INT_MAX);
-    vector<int> routes[MAXN];
+    vector<int> dist(n, INT_MAX), routes[MAXN];
     dist[src] = 0;
     for (int i=0; i<n; i++) {
         int cur = -1;
