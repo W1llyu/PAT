@@ -4,7 +4,7 @@ using namespace std;
 
 bool is_prime(int x) {
     bool yes = x >= 2;
-    for (int i=2; i<=sqrt(x); i++) {
+    for (int i=2; i*i<=x; i++) {
         if (x % i == 0) {
             yes = false;
             break;
