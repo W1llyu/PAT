@@ -1,3 +1,6 @@
+/**
+ * 注意一下几个特殊的测试点比如0 然后正负号要放在分子上
+ */
 #include <iostream>
 #include <cmath>
 #define ll long long

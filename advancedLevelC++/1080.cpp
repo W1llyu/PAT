@@ -1,3 +1,7 @@
+/**
+ * 快乐模拟题，把所有学生先排序求排名之后一个一个录取即可
+ * 别理解错题意，这里不是按志愿优先级录取的
+ */
 #include <iostream>
 #include <vector>
 #include <set>
@@ -42,6 +46,7 @@ int main () {
 	int rank = 1;
 	for (int i=0; i<n; i++) {
 		Student stu = stus[i];
+		// 算排名
 		if (i>0 && (stus[i].final != stus[i-1].final || stus[i].Ge != stus[i-1].Ge))
 			rank = i+1;
 		stu.rank = rank;

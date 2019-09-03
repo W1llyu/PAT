@@ -1,3 +1,7 @@
+/**
+ * 进栈顺序是先序
+ * 出栈顺序是中序
+ */
 #include <iostream>
 #include <vector>
 #include <sstream>

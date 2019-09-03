@@ -1,3 +1,6 @@
+/*
+ * 从root向后遍历到没有后继的顶点即可
+ */
 #include <iostream>
 #include <vector>
 #include <cmath>

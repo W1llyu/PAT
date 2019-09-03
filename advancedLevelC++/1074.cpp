@@ -22,6 +22,7 @@ int main () {
     }
     for (int i=0; i<list.size(); i++) {
         if (i-i%k + k > list.size()) break;
+        // 找到需要reverse的元素交换一下
         if (i % k < k/2) {
             swap(list[i], list[i-i%k+k-1-i%k]);
         }

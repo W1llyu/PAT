@@ -1,3 +1,6 @@
+/**
+ * DFS遍历一遍图，判断一下中间条件即可
+ */
 #include <iostream>
 #include <vector>
 #include <set>

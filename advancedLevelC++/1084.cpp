@@ -1,3 +1,6 @@
+/**
+ * 输入的字符串长度才不超过80，暴搜就是了
+ */
 #include <iostream>
 #include <vector>
 #include <set>

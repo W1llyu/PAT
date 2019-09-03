@@ -1,3 +1,8 @@
+/**
+ *  a/b + c/d = (ad+bc)/bd
+ *  a/b * c/d = (ac)/(bd)
+ *  a/b / c/d = (ad)/(bc)
+ */
 #include <iostream>
 #define ll long long
 using namespace std;

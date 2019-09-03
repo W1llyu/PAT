@@ -1,3 +1,9 @@
+/**
+ * 排序后用两个指针从前向后搜索
+ * 一个指向子序列头，一个指向子序列尾, 头是m，尾是M
+ * 如果 m*p >= M，记录一下序列长度，尾指针向后移一位
+ * 否则就是头太小了，头指正向后移一位
+ */
 #include <iostream>
 #include <vector>
 #include <algorithm>

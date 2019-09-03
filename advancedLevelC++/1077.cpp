@@ -1,3 +1,6 @@
+/**
+ * 从后往前一个字符一个字符比对
+ */
 #include <iostream>
 #include <vector>
 #include <limits.h>
