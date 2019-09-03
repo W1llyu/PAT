@@ -12,11 +12,13 @@
 
 
 | list | 
-| ------------ | 
-| [最大公约数](https://github.com/W1llyu/PAT/blob/master/examples/gcd.cpp) | 
+| ------------ |
+| [判断是否为素数](https://github.com/W1llyu/PAT/blob/master/examples/prime.cpp) |
+| [最大公约数](https://github.com/W1llyu/PAT/blob/master/examples/gcd.cpp) |
+| [Hash冲突平方探测](https://github.com/W1llyu/PAT/blob/master/examples/quadratic_probe.cpp) |
 | [并查集](https://github.com/W1llyu/PAT/blob/master/examples/dsu.cpp) |
-| [先序和中序序列构造二叉树](https://github.com/W1llyu/PAT/blob/master/examples/build_bintree_with_seq.cpp) |
 | [输出二叉树图形](https://github.com/W1llyu/PAT/blob/master/examples/output_bintree.cpp) |
+| [先序和中序序列构造二叉树](https://github.com/W1llyu/PAT/blob/master/examples/build_bintree_with_seq.cpp) |
 | [后序和中序序列构造二叉树](https://github.com/W1llyu/PAT/blob/master/examples/build_bintree_with_seq.cpp) |
 | [二叉树遍历](https://github.com/W1llyu/PAT/blob/master/examples/bintree_visit.cpp) |
 | [判断完全二叉树](https://github.com/W1llyu/PAT/blob/master/examples/complete_bintree.cpp) |
