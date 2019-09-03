@@ -20,7 +20,7 @@ int mindist, mintime;
 // 最短距离路径，最小时间路径
 vector<int> distroutes, timeroutes;
 // 保存所有边
-vector<vector<int> > edges;
+vector<int> edges[MAXN];
 void build_edge(int src, int dst, int dist, int time) {
 	edges[src].push_back(dst);
 	distmap[src][dst] = dist;
@@ -29,7 +29,7 @@ void build_edge(int src, int dst, int dist, int time) {
 void dijkstra1(int src, int dst) {
 	vector<bool> visits(n, false);
 	vector<int> dist(n, INT_MAX), time(n, INT_MAX);
-	vector<vector<int> > routes(n);
+	vector<int> routes[MAXN];
 	// 用优先级队列来查找最短路径
 	priority_queue<Vertex> pq;
 	dist[src] = time[src] = 0;
@@ -60,7 +60,7 @@ void dijkstra1(int src, int dst) {
 void dijkstra2(int src, int dst) {
 	vector<bool> visits(n, false);
 	vector<int> time(n, INT_MAX);
-	vector<vector<int> > routes(n);
+	vector<int> routes[MAXN];
 	priority_queue<Vertex> pq;
 	time[src] = 0;
 	pq.push(Vertex{src, 0});
@@ -93,7 +93,6 @@ void print_path(vector<int> path) {
 }
 int main () {
 	scanf("%d %d", &n, &m);
-	edges.resize(n);
 	for (int i=0; i<m; i++) {
 		int o, d, t;
 		scanf("%d%d%d%d%d", &x, &y, &o, &d, &t);

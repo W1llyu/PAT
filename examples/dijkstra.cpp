@@ -7,16 +7,16 @@
 #include <iostream>
 #include <vector>
 #include <limits.h>
-#define MAXN 1001
+#define MAXN 1010
 using namespace std;
 
 int n, m, x, y, d, distmap[MAXN][MAXN];
-vector<vector<int> > edges;
+<vector<int> edges[MAXN];
 
 void dijkstra(int src, int dst) {
     vector<bool> visits(n, false);
     vector<int> dist(n, INT_MAX);
-    vector<vector<int> > routes(n);
+    vector<int> routes[MAXN];
     dist[src] = 0;
     for (int i=0; i<n; i++) {
         int cur = -1;
@@ -63,7 +63,6 @@ void dijkstra(int src, int dst) {
  */
 int main () {
     scanf("%d %d", &n, &m);
-    edges.resize(n);
     for (int i=0; i<m; i++) {
         scanf("%d %d %d", &x, &y, &d);
         edges[x].push_back(y);
