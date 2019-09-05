@@ -1,43 +1,40 @@
+/**
+ * 输入货物列表的时候用一个set存下来
+ * 每输入一个good判断一下它的incompatible good在不在set之中
+ */
 #include <iostream>
 #include <vector>
 #include <map>
-#include <set>
+#include <unordered_set>
 using namespace std;
 
-int n, m, k, x, y;
-map<int, set<int>> incom_goods;
-int main() {
+int n, m, x, y, k;
+map<int, vector<int> > incompatible;
+
+int main () {
     scanf("%d %d", &n, &m);
     for (int i=0; i<n; i++) {
         scanf("%d %d", &x, &y);
-        if (incom_goods.count(x) == 0) {
-            incom_goods[x] = set<int>();
-        }
-        incom_goods[x].insert(y);
-        if (incom_goods.count(y) == 0) {
-            incom_goods[y] = set<int>();
-        }
-        incom_goods[y].insert(x);
+        incompatible[x].push_back(y);
+        incompatible[y].push_back(x);
     }
     for (int i=0; i<m; i++) {
         scanf("%d", &k);
-        vector<int> goods;
-        bool yes = true;
-        while (k > 0) {
+        bool safe = true;
+        unordered_set<int> goods;
+        for (int j=0; j<k; j++) {
             scanf("%d", &x);
-            if (yes && incom_goods.count(x) != 0) {
-                for (int j = 0; j < goods.size(); j++) {
-                    if (incom_goods[x].count(goods[j]) > 0) {
-                        yes = false;
-                        break;
-                    }
+            if (!safe) continue;
+            goods.insert(x);
+            if (incompatible.count(x) == 0) continue;
+            for (int i=0; i<incompatible[x].size(); i++) {
+                if (goods.count(incompatible[x][i]) > 0) {
+                    safe = false;
+                    break;
                 }
             }
-            goods.push_back(x);
-            k--;
         }
-        printf("%s\n", yes ? "Yes" : "No");
+        printf("%s\n", safe ? "Yes":"No");
     }
-
     return 0;
 }

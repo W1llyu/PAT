@@ -1,48 +1,40 @@
 /**
- * 这题其实没有必要建树，有了层次序列就可以遍历整个树，遍历的过程中判断一下就可以
+ * 这题没有必要建树，有了层次序列就可以遍历整个树，遍历的过程中判断一下就可以
  */
 #include <iostream>
 #include <vector>
-#define MAX_HEAP -1
-#define MIN_HEAP 1
 #define NOT_HEAP 9
 #define DEPENDS 0
+#define MAX_HEAP -1
+#define MIN_HEAP 1
 using namespace std;
 
-int n, x, res = DEPENDS;
+int n, x, heap = DEPENDS;
 vector<int> tree;
 
-void judge(int x, int y) {
-	if (x == y) {
-		return;
-	}
-	if (DEPENDS == res) {
-		res = x > y ? MAX_HEAP : MIN_HEAP;
-	} else if ((MAX_HEAP == res && x < y) || (MIN_HEAP == res && x > y)) {
-		res = NOT_HEAP;
-	}
- }
- 
- void print_path(vector<int> path) {
- 	for (int i=0; i<path.size(); i++) {
- 		if (i != path.size()-1) {
- 			printf("%d ", path[i]);	
-		} else {
-			printf("%d\n", path[i]);
-		}	
-	 }
- }
+void judge(int parent, int child) {
+	if (parent == child || heap == NOT_HEAP) return;
+	if (heap == DEPENDS)
+		heap = parent > child ? MAX_HEAP : MIN_HEAP;
+	else if (heap == MIN_HEAP)
+		heap = parent < child ? MIN_HEAP : NOT_HEAP;
+	else if (heap == MAX_HEAP)
+		heap = parent > child ? MAX_HEAP : NOT_HEAP;
+}
 
-void visit(int idx, vector<int> path) {
-	if (!path.empty()) {
-		judge(path[path.size() - 1], tree[idx]);
-	}
-	path.push_back(tree[idx]);
-	// 左右节点的位置(从0开始)
+void traverse(int idx, vector<int> routes) {
+	if (idx >= n) return;
+	if (routes.size() > 0) judge(routes.back(), tree[idx]);
+	routes.push_back(tree[idx]);
+	// 左右节点在顺序表中的位置(从0开始)
 	int right = (idx+1)*2, left = right-1;
-	if (left > n-1) print_path(path);
-	if (right < n) visit(right, path);
-	if (left < n) visit(left, path);
+	traverse(right, routes);
+	traverse(left, routes);
+	// 当前节点已经是叶子节点
+	if (left >= n) {
+		for (int i=0; i<routes.size(); i++)
+			printf("%d%s", routes[i], i==routes.size()-1 ? "\n":" ");
+	}
 }
 
 int main () {
@@ -51,9 +43,9 @@ int main () {
 		scanf("%d", &x);
 		tree.push_back(x);
 	}
-	visit(0, vector<int>());
-	if (res == MAX_HEAP) printf("Max Heap\n");
-	else if (res == MIN_HEAP) printf("Min Heap\n");
-	else printf("Not Heap\n");
+	traverse(0, vector<int>());
+	if (heap == NOT_HEAP) printf("Not Heap\n");
+	else if (heap == MIN_HEAP) printf("Min Heap\n");
+	else if (heap == MAX_HEAP) printf("Max Heap\n");
 	return 0;
 }

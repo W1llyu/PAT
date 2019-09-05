@@ -2,44 +2,39 @@
  * 遍历一下每条边，看边的两个顶点是否相等即可
  */
 #include <iostream>
-#include <set>
 #include <vector>
+#include <unordered_set>
 using namespace std;
-
 struct Edge {
-	int vertex_1, vertex_2;
+	int v1, v2;
 };
-
-int m, n, k, x;
+int n, m, k, x;
 vector<Edge> edges;
 int main () {
 	scanf("%d %d", &n, &m);
 	for (int i=0; i<m; i++) {
 		Edge edge;
-		scanf("%d %d", &edge.vertex_1, &edge.vertex_2);
+		scanf("%d %d", &edge.v1, &edge.v2);
 		edges.push_back(edge);
 	}
 	scanf("%d", &k);
 	for (int i=0; i<k; i++) {
-		vector<int> vertices;
-		set<int> colors;
-		bool yes = true;
+		vector<int> vertice;
+		unordered_set<int> colors;
+		bool proper = true;
 		for (int j=0; j<n; j++) {
 			scanf("%d", &x);
+			vertice.push_back(x);
 			colors.insert(x);
-			vertices.push_back(x);
 		}
 		for (int j=0; j<edges.size(); j++) {
-			if (vertices[edges[j].vertex_1] == vertices[edges[j].vertex_2]) {
-				yes = false;
+			if (vertice[edges[j].v1] == vertice[edges[j].v2]) {
+				proper = false;
 				break;
 			}
 		}
-		if (yes) {
-			printf("%ld-coloring\n", colors.size());
-		} else {
-			printf("No\n");
-		}
+		if (proper) printf("%d-coloring\n", colors.size());
+		else printf("No\n");
 	}
 	return 0;
 }

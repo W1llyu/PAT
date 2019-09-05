@@ -1,47 +1,46 @@
+/**
+ * 注意的for循环结束条件
+ * 注意最后要求输出的是数字序列不是数，比如输出0023而不是23
+ */
 #include <iostream>
-#include <math.h>
 using namespace std;
 
-int l, k, start;
-char num[1001] = {'\0'};
-bool res = false;
+int l, k, idx = -1;
+string str;
 
-int get_integer(int s, int len) {
-	int r = 0;
-	for (int i=s; i<s+len; i++) {
-		r = r *10 + (num[i] - '0');
-	}
-	return r;
+int get_integer(int start, int len) {
+    int res = 0;
+    for (int i=0; i<len; i++) {
+        res = res*10 + (str[i+start] - '0');
+    }
+    return res;
 }
 
-bool judge_prime(int v) {
-	bool yes = true;
-	for (int i=2; i<=sqrt(v); i++) {
-		if (v % i == 0) {
-			yes = false;
-			break;
-		}
-	}
-	return yes;
+bool is_prime(int x) {
+    bool res = x >= 2;
+    for (int i=2; i*i<=x; i++) {
+        if (x % i == 0) {
+            res = false;
+            break;
+        }
+    }
+    return res;
 }
 
 int main () {
-	scanf("%d %d", &l, &k);
-	scanf("%s", num);
-	for (int i=0; i+k-1<l; i++) {
-		int val = get_integer(i, k);
-		if (judge_prime(val)) {
-			res = true;
-			start = i;
-			break;
-		}
-	}
-	if (res) {
-		for (int i=start; i<start+k; i++) {
-			printf("%c", num[i]);
-		}
-	} else {
-		printf("404");
-	}
-	return 0;
+    cin >> l >> k >> str;
+    for (int i=0; i+k<=l; i++) {
+        int num = get_integer(i, k);
+        if (is_prime(num)) {
+            idx = i;
+            break;
+        }
+    }
+    if (idx == -1) printf("404");
+    else {
+        for (int i=0; i<k; i++)
+            printf("%c", str[i+idx]);
+    }
+    printf("\n");
+    return 0;
 }

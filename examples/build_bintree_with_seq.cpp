@@ -11,6 +11,7 @@ Node *find_root_pre_in(int spre, int epre, int sin, int ein, int level) {
         if (node->val == inorder[i]) {
             node->left = find_root_pre_in(spre+1, spre+i-sin, sin, i-1, level+1);
             node->right = find_root_pre_in(spre+i-sin+1, epre, i+1, ein, level+1);
+            break;
         }
     }
     return node;
@@ -26,6 +27,7 @@ Node *find_root_post_in(int spos, int epos, int sin, int ein, int level) {
         if (node->val == inorder[i]) {
             node->left = find_root_post_in(spos, spos+i-sin-1, sin, i-1, level+1);
             node->right = find_root_post_in(spos+i-sin, epos-1, i+1, ein, level+1);
+            break;
         }
     }
     return node;
